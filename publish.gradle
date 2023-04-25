@@ -42,11 +42,11 @@ ext.addTaskToCopyAllOutputs = { task ->
     copyAllOutputs.from task.archivePath
 }
 
-def artifactGroupId = 'com.nou2lib.frc'
-def baseArtifactId = 'NoU2lib'
-def driverZipBaseName = "_GROUP_com_nou2lib_lib_ID_${baseArtifactId}-driver_CLS"
-def zipBaseName = "_GROUP_com_nou2lib_lib_ID_${baseArtifactId}-cpp_CLS"
-def javaBaseName = "_GROUP_com_nou2lib_lib_ID_${baseArtifactId}-java_CLS"
+def artifactGroupId = 'com.NoULib.lib'
+def baseArtifactId = 'NoULib'
+def driverZipBaseName = "_GROUP_com_NoULib_lib_ID_${baseArtifactId}-driver_CLS"
+def zipBaseName = "_GROUP_com_NoULib_lib_ID_${baseArtifactId}-cpp_CLS"
+def javaBaseName = "_GROUP_com_NoULib_lib_ID_${baseArtifactId}-java_CLS"
 
 task cppHeadersZip(type: Zip) {
     destinationDirectory = outputsFolder
@@ -148,7 +148,7 @@ tasks.matching {it != cleanReleaseRepo}.all {it.dependsOn cleanReleaseRepo}
 
 model {
     publishing {
-        def taskList = createComponentZipTasks($.components, ['NoU2lib'], zipBaseName, Zip, project, includeStandardZipFormat)
+        def taskList = createComponentZipTasks($.components, ['NoULib'], zipBaseName, Zip, project, includeStandardZipFormat)
 
         publications {
             cpp(MavenPublication) {

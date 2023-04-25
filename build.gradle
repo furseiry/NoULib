@@ -40,14 +40,14 @@ dependencies {
 nativeUtils {
   exportsConfigs {
     // Main library is just default empty. This will export everything
-    NoU2lib{
+    NoULib{
     }
   }
 }
 
 model {
   components {
-    NoU2lib(NativeLibrarySpec) {
+    NoULib(NativeLibrarySpec) {
       sources {
         cpp {
           source {

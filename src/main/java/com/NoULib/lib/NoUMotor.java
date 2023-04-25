@@ -1,4 +1,4 @@
-package com.nou2lib.lib;
+package com.NoULib.lib;
 
 import edu.wpi.first.hal.SimDevice;
 import edu.wpi.first.hal.SimDevice.Direction;
