@@ -15,19 +15,21 @@ public class NoUGPIO implements AutoCloseable {
     /**
      * INPUT
      */
-    READ_ONLY(Direction.kInput),
+    READ_ONLY(Direction.kInput, 1),
     /**
      * OUTPUT
      */
-    WRITE_ONLY(Direction.kOutput),
+    WRITE_ONLY(Direction.kOutput, 3),
     /**
      * INPUT_PULLUP
      */
-    READ_WRITE(Direction.kBidir);
+    READ_WRITE(Direction.kBidir, 5);
 
-    Direction value;
+    Direction dir;
+    int value;
 
-    private GPIOMode(Direction value) {
+    private GPIOMode(Direction dir, int value) {
+      this.dir = dir;
       this.value = value;
     }
   }
@@ -47,11 +49,11 @@ public class NoUGPIO implements AutoCloseable {
    */
   public NoUGPIO(int pin, GPIOMode mode) {
     simDevice = SimDevice.create("NoUGPIO", pin);
-    value = simDevice.createInt("value", mode.value, 0);
+    value = simDevice.createInt("value", mode.dir, 0);
     pinMode = mode;
 
     var prepDevice = SimDevice.create("GPIOPrep", pin);
-    prepDevice.createInt("mode", Direction.kOutput, 0).set(mode.ordinal());
+    prepDevice.createInt("mode", Direction.kOutput, mode.value);
     prepDevice.close();
   }
 
